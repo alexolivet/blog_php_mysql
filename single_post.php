@@ -8,7 +8,7 @@
 ?>
 <?php include('includes/head_section.php'); ?>
 <title>
-    <?php echo $post['title'] ?> | LifeBlog</title>
+    <?php echo $post['title'] ?> | Elwebman Wiki</title>
 </head>
 
 <body>

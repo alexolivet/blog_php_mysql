@@ -4,7 +4,7 @@ ini_set( "display_errors" , 1 );?>
 <!-- Source code for handling registration and login -->
 <?php include(ROOT_PATH .'/includes/registration_login.php'); ?>
 <?php include(ROOT_PATH .'/includes/head_section.php'); ?>
-<title>LifeBlog | Sign up </title>
+<title>Elwebman Wiki | Sign up </title>
 </head>
 
 <body>

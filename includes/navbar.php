@@ -1,6 +1,6 @@
 <div class="navbar">
             <div class="logo_div">
-                <a href="index.php"><h1>FluXlab Wiki</h1></a>
+                <a href="index.php"><h1>Elwebman Wiki</h1></a>
             </div>
             <ul>
                 <li><a class="active" href="index.php">Home</a></li>

@@ -9,7 +9,7 @@ ini_set( "display_errors" , 1 );?>
 <!-- Retrieve all posts from database  -->
 <?php $posts = getPublishedPosts(); ?>
 <?php require_once( ROOT_PATH .'/includes/head_section.php') ?>
-    <title>LifeBlog | Home </title>
+    <title>Elwebman Wiki | Home </title>
 </head>
 
 <body>

@@ -8,7 +8,7 @@
     <div class="header">
         <div class="logo">
             <a href="<?php echo BASE_URL .'admin/dashboard.php' ?>">
-                <h1>LifeBlog - Admin</h1>
+                <h1>Elwebman Wiki - Admin</h1>
             </a>
         </div>
         <?php if (isset($_SESSION['user'])): ?>

@@ -3,7 +3,7 @@ ini_set( "display_errors" , 1 );?>
 <?php  include('config.php'); ?>
 <?php  include(ROOT_PATH .'/includes/registration_login.php'); ?>
 <?php  include(ROOT_PATH .'/includes/head_section.php'); ?>
-<title>LifeBlog | Sign in </title>
+<title>Elwebman Wiki | Sign in </title>
 </head>
 
 <body>
