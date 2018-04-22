@@ -4,71 +4,140 @@
 <?php include(ROOT_PATH . '/admin/includes/head_section.php'); ?>
 <!-- Get all topics -->
 <?php $topics = getAllTopics(); ?>
-<title>Admin | Create Post</title>
+<title>elwebman.io | Create Post Admin</title>
 </head>
 
 <body>
-    <!-- admin navbar -->
-    <?php include(ROOT_PATH . '/admin/includes/navbar.php') ?>
-    <div class="container content">
-        <!-- Left side menu -->
-        <?php include(ROOT_PATH . '/admin/includes/menu.php') ?>
-        <!-- Middle form - to create and edit  -->
-        <div class="action create-post-div">
-            <h1 class="page-title">Create/Edit Post</h1>
-            <form method="post" enctype="multipart/form-data" action="<?php echo BASE_URL . 'admin/create_post.php'; ?>">
-                <!-- validation errors for the form -->
-                <?php include(ROOT_PATH . '/includes/errors.php') ?>
-                <!-- if editing post, the id is required to identify that post -->
-                <?php if ($isEditingPost === true): ?>
-                <input type="hidden" name="post_id" value="<?php echo $post_id; ?>">
-                <?php endif ?>
-                <label style="float: left; margin: 5px auto 5px;">Title</label>
-                <input type="text" name="title" value="<?php echo $title; ?>" placeholder="Title">
-                <label style="float: left; margin: 5px auto 5px;">Current image</label>
-                <input type="text" name="featured_image" value="<?php echo $featured_image; ?>" placeholder="No image to display">
-                <label style="float: left; margin: 5px auto 5px;">Add / Edit image</label>
-                <input type="file" name="featured_image">
-                <textarea name="body" id="body" cols="30" rows="10">
-                    <?php echo $body; ?>
-                </textarea>
-                <select name="topic_id">
-                    <option value="<?php echo $topic_name; ?>" selected>
-                        <?php echo $topic_name; ?> - Edit topic</option>
-                    <?php foreach ($topics as $topic): ?>
-                    <option value="<?php echo $topic['id']; ?>">
-                        <?php echo $topic['name']; ?>
-                    </option>
-                    <?php endforeach ?>
-                </select>
-                <!-- Only admin users can view publish input field -->
-                <?php if ($_SESSION['user']['role'] == "Admin"): ?>
-                <!-- display checkbox according to whether post has been published or not -->
-                <?php if ($published == true): ?>
-                <label for="publish">
-                    Publish
-                    <input type="checkbox" value="1" name="publish" checked="checked">&nbsp;
-                </label>
-                <?php else: ?>
-                <label for="publish">
-                    Publish
-                    <input type="checkbox" value="1" name="publish">&nbsp;
-                </label>
-                <?php endif ?>
-                <?php endif ?>
-                <!-- if editing post, display the update button instead of create button -->
-                <?php if ($isEditingPost === true): ?>
-                <button type="submit" disabled class="btn myButton" name="update_post">UPDATE</button>
-                <?php else: ?>
-                <button type="submit" disabled class="btn myButton" name="create_post">Save Post</button>
-                <?php endif ?>
-            </form>
-        </div>
-        <!-- // Middle form - to create and edit -->
+    <!-- Hero -->
+    <div class="container is-fluid">
+        <section class="hero is-primary">
+            <!-- Hero head: will stick at the top -->
+            <div class="hero-head">
+                <!-- navbar -->
+                <?php include( ROOT_PATH .'/admin/includes/navbar.php') ?>
+                <!-- // navbar -->
+            </div>
     </div>
-</body>
-
-</html>
-<script>
-CKEDITOR.replace('body');
-</script>
+    </nav>
+    </div>
+    <!-- Hero content: will be in the middle -->
+    <div class="hero-body">
+        <div class="container has-text-centered">
+            <h1 class="title">
+			Create / Edit  Posts
+		</h1>
+            <h2 class="subtitle">
+			Create - Edit Posts - Admin
+		</h2>
+        </div>
+    </div>
+    <!-- //Hero content: will be in the middle -->
+    </section>
+    </div>
+    <!-- // Hero -->
+    <div class="container is-fluid">
+        <section class="section">
+            <div class="columns container">
+                <!-- Aside nav drawer -->
+                <?php include( ROOT_PATH .'/admin/includes/aside.php') ?>
+                <!-- //Aside nav drawer -->
+                <div class="column is-centered">
+                    <!-- form start -->
+                    <form method="post" enctype="multipart/form-data" action="<?php echo BASE_URL . 'admin/create_post.php'; ?>">
+                        <!-- validation errors for the form -->
+                        <?php include(ROOT_PATH . '/includes/errors.php') ?>
+                        <!-- if editing post, the id is required to identify that post -->
+                        <?php if ($isEditingPost === true): ?>
+                        <input type="hidden" name="post_id" value="<?php echo $post_id; ?>">
+                        <?php endif ?>
+                        <div class="field">
+                            <label class="label">Title</label>
+                            <div class="control">
+                                <input class="input" type="text" name="title" value="<?php echo $title; ?>" placeholder="Title">
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label class="label">Current Image</label>
+                            <div class="control has-icons-left has-icons-right">
+                                <input class="input" type="text" name="featured_image" value="<?php echo $featured_image; ?>" placeholder="No image to display">
+                                <span class="icon is-small is-left">
+																	<i class="fas fa-user"></i>
+																	</span>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label class="label">Add / Edit Image</label>
+                            <div class="control has-icons-left has-icons-right">
+                                <input class="input is-danger" type="file" name="featured_image">
+                                <span class="icon is-small is-left">
+																	<i class="fas fa-envelope"></i>
+																</span>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label class="label">Message</label>
+                            <div class="control">
+                                <textarea class="textarea" placeholder="Textarea" name="body" id="body" cols="30" rows="10">
+                                    <?php echo $body; ?>
+                                </textarea>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label class="label">Topics</label>
+                            <div class="control">
+                                <div class="select">
+                                    <select name="topic_id">
+                                        <option value="<?php echo $topic_name; ?>" selected>
+                                            <?php echo $topic_name; ?> - Edit topic</option>
+                                        <?php foreach ($topics as $topic): ?>
+                                        <option value="<?php echo $topic['id']; ?>">
+                                            <?php echo $topic['name']; ?>
+                                        </option>
+                                        <?php endforeach ?>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <div class="control">
+                                <!-- Only admin users can view publish input field -->
+                                <?php if ($_SESSION['user']['role'] == "Admin"): ?>
+                                <!-- display checkbox according to whether post has been published or not -->
+                                <?php if ($published == true): ?>
+                                <label for="publish">
+                                    Publish?
+                                    <input class="checkbox" type="checkbox" value="1" name="publish" checked="checked">
+                                </label>
+                                <?php else: ?>
+                                <label for="publish">
+                                    Publish
+                                    <input class="checkbox" type="checkbox" value="1" name="publish">
+                                </label>
+                                <?php endif ?>
+                                <?php endif ?>
+                            </div>
+                        </div>
+                        <div class="field is-grouped">
+                            <div class="control">
+                                <?php if ($isEditingPost === true): ?>
+                                <!-- if editing post, display the update button instead of create button -->
+                                <button type="submit" disabled class="button is-link myButton" name="update_post">UPDATE</button>
+                                <?php else: ?>
+                                <button type="submit" disabled class="button is-link myButton" name="create_post">SAVE POST</button>
+                                <?php endif ?>
+                            </div>
+                            <div class="control">
+                                <button class="button is-text">Cancel</button>
+                            </div>
+                        </div>
+                    </form>
+                    <!-- //form end -->
+                </div>
+            </div>
+        </section>
+    </div>
+    <!-- Footer -->
+    <?php include( ROOT_PATH .'/admin/includes/footer.php') ?>
+    <script>
+    CKEDITOR.replace('body');
+    </script>

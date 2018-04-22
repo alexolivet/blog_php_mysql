@@ -1,5 +1,5 @@
 <?php if (isset($_SESSION['message'])) : ?>
-<div class="message">
+<div class="notification is-warning">
     <p>
         <?php 
           	echo $_SESSION['message']; 

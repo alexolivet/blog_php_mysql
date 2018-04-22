@@ -3,28 +3,62 @@ ini_set( "display_errors" , 1 );?>
 <?php  include('config.php'); ?>
 <?php  include(ROOT_PATH .'/includes/registration_login.php'); ?>
 <?php  include(ROOT_PATH .'/includes/head_section.php'); ?>
-<title>Elwebman Wiki | Sign in </title>
+<title>elwebman.io | Login</title>
 </head>
 
 <body>
-    <div class="container">
-        <!-- Navbar -->
-        <?php include( ROOT_PATH . '/includes/navbar.php'); ?>
-        <!-- // Navbar -->
-        <div style="width: 40%; margin: 20px auto;">
-            <form method="post" action="login.php">
-                <h2>Login</h2>
-                <?php include(ROOT_PATH . '/includes/errors.php') ?>
-                <input type="text" name="username" value="<?php echo $username; ?>" value="" placeholder="Username">
-                <input type="password" name="password" placeholder="Password">
-                <button type="submit" class="btn" name="login_btn">Login</button>
-                <p>
-                    Not yet a member? <a href="register.php">Sign up</a>
+    <!-- Hero -->
+    <div class="container is-fluid">
+        <section class="hero is-primary">
+            <!-- Hero head: will stick at the top -->
+            <div class="hero-head">
+                <!-- navbar -->
+                <?php include( ROOT_PATH .'/includes/navbar.php') ?>
+                <!-- // navbar -->
+            </div>
+    </div>
+    </nav>
+    </div>
+    <!-- // Hero head: will stick at the top -->
+    <!--  Hero body -->
+    <div class="hero-body has-background-white">
+        <div class="columns has-text-centered">
+            <div class="column is-4 is-offset-4">
+                <h3 class="title has-text-grey">Login</h3>
+                <p class="subtitle has-text-grey">Please login to proceed.</p>
+                <div class="box">
+                    <figure class="avatar">
+                        <img src="https://placehold.it/128x128">
+                    </figure>
+                    <form method="post" action="login.php">
+                        <div class="field">
+                            <div class="control has-icons-left has-icons-right">
+                                <input class="input is-success" type="text" name="username" value="<?php echo $username; ?>" placeholder="Username">
+                                <span class="icon is-small is-left">
+																	<i class="fas fa-user"></i>
+																</span>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <div class="control has-icons-left has-icons-right">
+                                <input class="input is-danger" type="password" name="password" placeholder="Your Password">
+                                <span class="icon is-small is-left">
+																<i class="fas fa-key"></i>
+																</span>
+                            </div>
+                        </div>
+                        <button class="button is-block is-info is-large is-fullwidth" type="submit" name="login_btn">Login</button>
+                    </form>
+                </div>
+                <p class="has-text-grey">
+                    Not yet a member? <a href="register.php">Sign Up</a> &nbsp;·&nbsp;
+                    <a href="../">Need Help?</a>
                 </p>
-            </form>
+            </div>
         </div>
     </div>
-    <!-- // container -->
-    <!-- Footer -->
-    <?php include( ROOT_PATH . '/includes/footer.php'); ?>
-    <!-- // Footer -->
+    </section>
+    </div>
+    <!-- // Hero -->
+   <!-- Footer -->
+       <?php include( ROOT_PATH .'/includes/footer.php') ?>

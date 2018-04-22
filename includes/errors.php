@@ -1,9 +1,7 @@
 <?php if (count($errors) > 0) : ?>
-<div class="message error validation_errors">
+<div class="notification is-warning">
     <?php foreach ($errors as $error) : ?>
-    <p>
-        <?php echo $error ?>
-    </p>
+    <button class="delete"></button>
+    <strong><?php echo $error ?></strong>
     <?php endforeach ?>
-</div>
-<?php endif ?>
+    <?php endif ?>

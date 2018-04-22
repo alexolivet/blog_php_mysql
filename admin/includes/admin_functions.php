@@ -200,6 +200,7 @@ function getAdminUsers(){
 
 	return $users;
 }
+
 /* * * * * * * * * * * * * * * * * * * * *
 * - Escapes form submitted value, hence, preventing SQL injection
 * * * * * * * * * * * * * * * * * * * * * */

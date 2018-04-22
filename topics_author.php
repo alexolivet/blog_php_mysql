@@ -5,61 +5,79 @@ ini_set( "display_errors" , 1 );?>
 <?php $topics = getAllTopics();?>
 <?php $posts = getPublishedPosts(); ?>
 <?php include('includes/head_section.php'); ?>
+<?php 
+    // Get posts under a particular topic
+if (isset($_GET['topic'])) {
+    $topic_id = $_GET['topic'];
+    $posts = getPublishedPostsByTopic($topic_id);
+    $topics = getAllTopics();
+}
+?>
 <title>
-    <?php echo $post['title'] ?> | Elwebman Wiki</title>
+    Topics | Elwebman Wiki</title>
 </head>
 
 <body>
-    <div class="container">
-        <!-- Navbar -->
-        <?php include( ROOT_PATH . '/includes/navbar.php'); ?>
-        <!-- // Navbar -->
-        <div class="content">
-            <!-- Page wrapper -->
-            <div class="post-wrapper">
-                <!-- full post div -->
-                <?php foreach ($posts as $post): ?>
-                <div class="post" style="margin-left: 0px;">
-                    <img src="<?php echo BASE_URL . '/static/images/' . $post['image']; ?>" class="post_image" alt="">
-                    <!-- Added this if statement... -->
-                    <?php if (isset($post['topic']['name'])): ?>
-                    <a href="<?php echo BASE_URL . 'filtered_posts.php?topic=' . $post['topic']['id'] ?>" class="btn category">
-                        <?php echo $post['topic']['name'] ?>
-                    </a>
-                    <?php endif ?>
-                    <a href="single_post.php?post-slug=<?php echo $post['slug']; ?>">
-                        <div class="post_info">
-                            <h3><?php echo $post['title'] ?></h3>
-                            <div class="info">
-                                <span><?php echo date("F j, Y ", strtotime($post["created_at"])); ?></span>
-                                <span class="read_more">Read more...</span>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <?php endforeach ?>
-                <!-- // full post div -->
-                <!-- comments section -->
-                <!--  coming soon ...  -->
+    <!-- Hero -->
+    <div class="container is-fluid">
+        <section class="hero is-primary">
+            <!-- Hero head: will stick at the top -->
+            <div class="hero-head">
+                <!-- navbar -->
+                <?php include( ROOT_PATH .'/includes/navbar.php') ?>
+                <!-- // navbar -->
             </div>
-            <!-- // Page wrapper -->
-            <!-- post sidebar -->
-            <div class="post-sidebar">
-                <div class="card">
-                    <div class="card-header">
-                        <h2>Topics</h2>
-                    </div>
-                    <div class="card-content">
-                        <?php foreach ($topics as $topic): ?>
-                        <a href="<?php echo BASE_URL . 'filtered_posts.php?topic=' . $topic['id'] ?>">
-                            <?php echo $topic['name']; ?>
-                        </a>
-                        <?php endforeach ?>
-                    </div>
-                </div>
-            </div>
-            <!-- // post sidebar -->
         </div>
+    </nav>
+    <div class="hero-body">
+        <div class="container has-text-centered">
+            <div class="box">
+                <div class="columns is-mobile is-centered">
+                    <div class="field is-grouped is-grouped-multiline">
+                        <?php foreach ($topics as $topic): ?>
+                        <a class="control" href="<?php echo BASE_URL . 'topics_author.php?topic=' . $topic['id'] ?>">
+                         <span class="tag is-link is-large"> <?php echo $topic['name']; ?></span></a>
+                     </a>
+                 <?php endforeach ?>
+             </div>
+         </div>
+     </div>
+ </div>
+</div>
+</section>
+</div>
+<section class="container">
+    <br>
+    <!-- Post -->
+    <section class="section">
+        <div class="container">
+            <div class="columns is-mobile is-multiline is-centered">
+                <?php foreach ($posts as $post): ?>
+                <div class="column is-half-desktop is-half-tablet is-three-quarters-mobile post">
+                    <article class="notification">
+                        <?php if (isset($post['topic']['name'])): ?>
+                        <a class="post__category" href="<?php echo BASE_URL . 'topics_author.php?topic=' . $post['topic']['id'] ?>" class="btn category">
+                            <?php echo $post['topic']['name'] ?>
+                        </a>
+                    <?php endif ?>
+                    <figure class="image is-16by9">
+                        <img src="<?php echo BASE_URL . '/static/images/' . $post['image']; ?>" class="post_image" alt="">
+                    </figure>
+                    <p class="post__title">
+                        <?php echo $post['title'] ?>
+                    </p>
+                    <p class="subtitle">Created on
+                        <?php echo date("F j, Y ", strtotime($post["created_at"])); ?>
+                    </p>
+                    <a href="single_post.php?post-slug=<?php echo $post['slug']; ?>" class="post__permalink" href="">Learn more</a>
+                </article>
+            </div>
+        <?php endforeach ?>
     </div>
-    <!-- // content -->
-    <?php include( ROOT_PATH . '/includes/footer.php'); ?>
+</div>
+</section>
+<!-- // Post -->
+<br>
+</section>
+<!-- Footer -->
+       <?php include( ROOT_PATH .'/includes/footer.php') ?>

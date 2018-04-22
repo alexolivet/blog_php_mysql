@@ -23,7 +23,8 @@ function debug_to_console( $data ) {
     echo "<script>console.log( 'Debug Objects: " . $output . "' );</script>";
 }
 //then use this with the item you want to check
-
+	
+//debug_to_console($mydata);
 
 
 if (!function_exists('mysqli_fetch_all')) { 
@@ -59,6 +60,7 @@ function getAllPosts()
 	}
 	return $final_posts;
 }
+
 // get the author/username of a post
 function getPostAuthorById($user_id)
 {

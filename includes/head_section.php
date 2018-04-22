@@ -2,6 +2,10 @@
 <html>
 
 <head>
-    <!-- Styling for public area -->
-    <link rel="stylesheet" href="static/css/public_styling.css">
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- main css -->
+    <link rel="stylesheet" href="static/node_modules/bulma/css/bulma.css">
+    <!-- custom css -->
+    <link rel="stylesheet" href="static/node_modules/bulma/css/style.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
