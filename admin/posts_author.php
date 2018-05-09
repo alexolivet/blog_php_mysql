@@ -90,12 +90,18 @@
                                 <!-- Only Admin can publish/unpublish post -->
                                 <td>
                                     <a href="create_post_author.php?edit-post=<?php echo $post['id'] ?>">
-                                    	222
+                                    	<span class="icon">
+                                <i class="fas fa-lg fa-pencil-alt"> 
+                                </i>
+                            </span>
                                 </a>
                                 </td>
                                 <td>
                                     <a href="create_post_author.php?delete-post=<?php echo $post['id'] ?>">
-                                    	222
+                                    	 <span class="icon">
+                                <i class="fas fa-lg fa-trash-alt">   
+                                </i>
+                            </span>
                                 </a>
                                 </td>
                             </tr>

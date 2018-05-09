@@ -38,6 +38,7 @@
                 <?php include( ROOT_PATH .'/admin/includes/aside_author.php') ?>
                 <!-- //Aside nav drawer -->
                 <div class="column is-hidden-mobile is-two-fifths">
+                    <?php include(ROOT_PATH . '/includes/messages.php') ?>
                     <h1 class="title">Profile</h1>
                     <?php if (isset($_SESSION['user'])): ?>
                     <form method="post">

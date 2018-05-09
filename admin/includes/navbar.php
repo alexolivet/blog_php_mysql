@@ -2,7 +2,7 @@
   <div class="container">
     <div class="navbar-brand">
       <a class="navbar-item" href="../">
-        <img src="http://bulma.io/images/bulma-type-white.png" alt="Logo">
+        <img src="../static/images/elwebman_logo.png" alt="Logo">
       </a>
       <span class="navbar-burger burger" data-target="navbarMenu">
         <span></span>
@@ -29,7 +29,7 @@
           </a>
         </span>
         <span class="navbar-item">
-          <a class="button is-white is-outlined" href="#">
+          <a class="button is-white is-outlined" href="https://github.com/alexolivet">
             <span class="icon">
               <i class="fab fa-lg fa-github"></i>
             </span>

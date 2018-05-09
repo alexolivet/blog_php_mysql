@@ -201,6 +201,9 @@ function createPost($request_values)
 		if (isset($request_values['topic_id'])) {
 			$topic_id = esc($request_values['topic_id']);
 		}
+		if (isset($request_values['publish'])) {
+			$published = esc($request_values['publish']);
+		}
 		// create slug: if title is "The Storm Is Over", return "the-storm-is-over" as slug
 		$post_slug = makeSlug($title);
 

@@ -54,7 +54,7 @@ $roles = ['Admin', 'Author'];
                         <div class="field">
                             <label class="label">Username</label>
                             <div class="control">
-                                <input class="input" type="text" name="username" value="<?php echo $username; ?>" placeholder="Username">
+                                <input class="input" type="text" id="usernameLength" data-charcount-maxlength="20" name="username" value="<?php echo $username; ?>" placeholder="Username">
                             </div>
                         </div>
                         <div class="field">
@@ -94,10 +94,10 @@ $roles = ['Admin', 'Author'];
                         <div class="field is-grouped">
                             <div class="control">
                                 <?php if ($isEditingUser === true): ?>
-                                <button type="submit" class="button is-link myButton" name="update_admin">
+                                <button type="submit" disabled class="button is-link myButton" name="update_admin">
                                     UPDATE</button>
                                 <?php else: ?>
-                                <button type="submit" class="button is-link myButton" name="create_admin">
+                                <button type="submit" disabled class="button is-link myButton" name="create_admin">
                                     Save User</button>
                                 <?php endif ?>
                             </div>

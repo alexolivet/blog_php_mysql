@@ -44,6 +44,7 @@
                 <?php include( ROOT_PATH .'/admin/includes/aside.php') ?>
                 <!-- //Aside nav drawer -->
                 <section class="column">
+                     <?php include(ROOT_PATH . '/includes/messages.php') ?>
                     <div class="tile is-ancestor">
                         <div class="tile is-vertical is-8">
                             <div class="tile">

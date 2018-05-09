@@ -125,8 +125,6 @@ function updateAdmin($request_values){
 	$admin_id = $request_values['admin_id'];
 	// set edit state to false
 	$isEditingUser = false;
-
-
 	$username = esc($request_values['username']);
 	$email = esc($request_values['email']);
 	$password = esc($request_values['password']);

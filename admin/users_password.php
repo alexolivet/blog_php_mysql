@@ -45,9 +45,9 @@ $roles = ['Admin', 'Author'];
                 <!-- //Aside nav drawer -->
                 <div class="column is-hidden-mobile">
                     <h1 class="title">Edit User Password</h1>
-                    <form method="post" action="<?php echo BASE_URL . 'admin/users_password.php'; ?>">
-                        <!-- validation errors for the form -->
+                    <!-- validation errors for the form -->
                         <?php include(ROOT_PATH . '/includes/errors.php') ?>
+                    <form method="post" action="<?php echo BASE_URL . 'admin/users_password.php'; ?>"> 
                         <!-- if editing user, the id is required to identify that user -->
                         <?php if ($isEditingUser === true): ?>
                         <input type="hidden" name="admin_id" value="<?php echo $admin_id; ?>">
@@ -55,7 +55,7 @@ $roles = ['Admin', 'Author'];
                         <div class="field">
                             <label class="label">Username</label>
                             <div class="control">
-                                <input class="input" disabled type="text" name="username" value="<?php echo $username; ?>" placeholder="Username">
+                                <input class="input" readonly type="text" name="username" value="<?php echo $username; ?>" placeholder="Username">
                             </div>
                         </div>
                         <div class="field">
@@ -121,15 +121,30 @@ $roles = ['Admin', 'Author'];
                                     <?php echo $admin['role']; ?>
                                 </td>
                                 <td>
-                                    <a href="users_update.php?edit-admin=<?php echo $admin['id'] ?>">333
+                                    <a href="users_update.php?edit-admin=<?php echo $admin['id'] ?>">   
+                                        <span class="icon">
+                                    <i class="fas fa-pencil-alt">
+                                        
+                                    </i>
+                                </span>
 					</a>
                                 </td>
                                 <td>
-                                    <a href="users_password.php?edit-admin=<?php echo $admin['id'] ?>">333
+                                    <a href="users_password.php?edit-admin=<?php echo $admin['id'] ?>">
+                                        <span class="icon">
+                                    <i class="fas fa-key">
+                                        
+                                    </i>
+                                </span>
 					</a>
                                 </td>
                                 <td>
-                                    <a href="users.php?delete-admin=<?php echo $admin['id'] ?>">333
+                                    <a href="users.php?delete-admin=<?php echo $admin['id'] ?>">
+                                        <span class="icon">
+                                    <i class="fas fa-trash-alt">
+                                        
+                                    </i>
+                                </span>
 					</a>
                                 </td>
                             </tr>

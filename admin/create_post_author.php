@@ -42,9 +42,9 @@
                 <?php include( ROOT_PATH .'/admin/includes/aside_author.php') ?>
                 <!-- //Aside nav drawer -->
                 <section class="column">
+                     <!-- validation errors for the form -->
+                    <?php include(ROOT_PATH . '/includes/errors.php') ?>
                     <form method="post" enctype="multipart/form-data" action="<?php echo BASE_URL . 'admin/create_post_author.php'; ?>">
-                        <!-- validation errors for the form -->
-                        <?php include(ROOT_PATH . '/includes/errors.php') ?>
                         <!-- if editing post, the id is required to identify that post -->
                         <?php if ($isEditingPost === true): ?>
                         <input type="hidden" name="post_id" value="<?php echo $post_id; ?>">
@@ -52,24 +52,20 @@
                         <div class="field">
                             <label class="label">Title</label>
                             <div class="control">
-                                <input class="input" type="text" name="title" value="<?php echo $title; ?>" placeholder="Title">
+                                <input class="input" type="text" id="postTitleInput" data-charcount-maxlength="70" name="title" value="<?php echo $title; ?>" placeholder="Title">
                             </div>
                             <div class="field">
                                 <label class="label">Current Image</label>
                                 <div class="control has-icons-left has-icons-right">
-                                    <input class="input" type="text" name="featured_image" value="<?php echo $featured_image; ?>" placeholder="No image to display">
-                                    <span class="icon is-small is-left">
-                                        <i class="fas fa-user"></i>
-                                        </span>
+                                    <input class="input" type="text" name="featured_image" readonly value="<?php echo $featured_image; ?>" placeholder="No image to display">
+                                  
                                 </div>
                             </div>
                             <div class="field">
                                 <label class="label">Add / Edit Image</label>
                                 <div class="control has-icons-left has-icons-right">
                                     <input class="input is-danger" type="file" name="featured_image">
-                                    <span class="icon is-small is-left">
-                                    <i class="fas fa-envelope"></i>
-                                    </span>
+                                   
                                 </div>
                             </div>
                             <div class="field">

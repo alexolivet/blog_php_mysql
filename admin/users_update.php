@@ -55,7 +55,7 @@ $roles = ['Admin', 'Author'];
                         <div class="field">
                             <label class="label">Username</label>
                             <div class="control">
-                                <input class="input" type="text" name="username" value="<?php echo $username; ?>" placeholder="Username">
+                                <input class="input" type="text" id="usernameLength" data-charcount-maxlength="20" name="username" value="<?php echo $username; ?>" placeholder="Username">
                             </div>
                         </div>
                         <div class="field">
@@ -131,15 +131,30 @@ $roles = ['Admin', 'Author'];
                                     <?php echo $admin['role']; ?>
                                 </td>
                                 <td>
-                                    <a href="users_update.php?edit-admin=<?php echo $admin['id'] ?>">333
+                                    <a href="users_update.php?edit-admin=<?php echo $admin['id'] ?>">   
+                                        <span class="icon">
+                                    <i class="fas fa-pencil-alt">
+                                        
+                                    </i>
+                                </span>
 					</a>
                                 </td>
                                 <td>
-                                    <a href="users_password.php?edit-admin=<?php echo $admin['id'] ?>">333
+                                    <a href="users_password.php?edit-admin=<?php echo $admin['id'] ?>">
+                                        <span class="icon">
+                                    <i class="fas fa-key">
+                                        
+                                    </i>
+                                </span>
 					</a>
                                 </td>
                                 <td>
-                                    <a href="users.php?delete-admin=<?php echo $admin['id'] ?>">333
+                                    <a href="users.php?delete-admin=<?php echo $admin['id'] ?>">
+                                        <span class="icon">
+                                    <i class="fas fa-trash-alt">
+                                        
+                                    </i>
+                                </span>
 					</a>
                                 </td>
                             </tr>

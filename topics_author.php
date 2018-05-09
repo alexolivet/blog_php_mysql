@@ -29,7 +29,7 @@ if (isset($_GET['topic'])) {
             </div>
         </div>
     </nav>
-    <div class="hero-body">
+    <div class="hero-body header_image  ">
         <div class="container has-text-centered">
             <div class="box">
                 <div class="columns is-mobile is-centered">

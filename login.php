@@ -30,6 +30,7 @@ ini_set( "display_errors" , 1 );?>
                     <figure class="avatar">
                         <img src="https://placehold.it/128x128">
                     </figure>
+                    <?php include(ROOT_PATH . '/includes/errors.php') ?>
                     <form method="post" action="login.php">
                         <div class="field">
                             <div class="control has-icons-left has-icons-right">

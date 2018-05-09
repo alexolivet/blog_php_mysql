@@ -60,20 +60,19 @@ $topics = getAllTopics();
 <!-- Post -->
 <section class="section">
     <div class="container is-fluid">
-        <div class="columns is-mobile is-multiline is-centered">
-            <div class="column is-half-desktop is-half-tablet is-three-quarters-mobile">
+        <div class="columns is-mobile is-centered">
+            <div class="column is-four-fifths">
                 <article class="notification">
                     <?php if (isset($post['topic']['name'])): ?>
-                    <a class="post__category" href="<?php echo BASE_URL . 'filtered_posts.php?topic=' . $post['topic']['id'] ?>" class="post__category" href="">
+                    <a class="post__category" href="<?php echo BASE_URL . 'topics_author.php?topic=' . $post['topic']['id'] ?>" class="post__category" href="">
                         <?php echo $post['topic']['name'] ?>
                     </a>
                 <?php endif ?>
-                <figure class="image is-16by9">
+<!--                 <figure class="image is-16by9">
                   <img src="<?php echo BASE_URL . '/static/images/' . $post['image']; ?>" class="post_image" alt="">
-                </figure>
-                <p class="post__title">Middle tile</p>
-                <p class="subtitle">With an image</p>
-                <?php echo html_entity_decode($post['body']); ?>
+                </figure> -->
+                <p class="post__title"><?php echo $post['title']; ?></p>
+               <p><?php echo html_entity_decode($post['body']); ?></p>
             <?php endif ?>
         </article>
     </div>

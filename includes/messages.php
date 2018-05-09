@@ -1,5 +1,6 @@
 <?php if (isset($_SESSION['message'])) : ?>
-<div class="notification is-warning">
+<div class="notification is-warning remove_alert">
+	<button type="button" class="delete"></button>
     <p>
         <?php 
           	echo $_SESSION['message']; 

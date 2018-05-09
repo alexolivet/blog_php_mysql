@@ -71,23 +71,23 @@ function createAdmin($request_values){
 	// Ensure that no user is registered twice. 
 	// the email and usernames should be unique
 	$user_check_query = "SELECT * FROM users WHERE username='$username' 
-							OR email='$email' LIMIT 1";
+	OR email='$email' LIMIT 1";
 	$result = mysqli_query($conn, $user_check_query);
 	$user = mysqli_fetch_assoc($result);
 	if ($user) { // if user exists
 		if ($user['username'] === $username) {
-		  array_push($errors, "Username already exists");
+			array_push($errors, "Username already exists");
 		}
 
 		if ($user['email'] === $email) {
-		  array_push($errors, "Email already exists");
+			array_push($errors, "Email already exists");
 		}
 	}
 	// register user if there are no errors in the form
 	if (count($errors) == 0) {
 		$password = md5($password);//encrypt the password before saving in the database
 		$query = "INSERT INTO users (username, email, role, password, created_at, updated_at) 
-				  VALUES('$username', '$email', '$role', '$password', now(), now())";
+		VALUES('$username', '$email', '$role', '$password', now(), now())";
 		mysqli_query($conn, $query);
 
 		$_SESSION['message'] = "Admin user created successfully";
@@ -132,72 +132,117 @@ function updateAdmin($request_values){
 	}
 
 	$user_check_query = "SELECT * FROM users WHERE username='$username' 
-							OR email='$email' LIMIT 1";
+	OR email='$email' LIMIT 1";
 	$result = mysqli_query($conn, $user_check_query);
 	$user = mysqli_fetch_assoc($result);
+
+
 	if ($user) { // if user exists
-		if ($user['username'] === $username) {
-		  array_push($errors, "Username already exists");
-		}
-
-		if ($user['email'] === $email) {
-		  array_push($errors, "Email already exists");
-		}
-	}
-
-	// register user if there are no errors in the form
-	if (count($errors) == 0) {
+		if ($user['username'] !== $request_values['username']) {
+			if (count($errors) == 0) {
 		//encrypt the password (security purposes)
-		$password = md5($password);
+				$password = md5($password);
 
-		$query = "UPDATE users SET username='$username', email='$email', role='$role' WHERE id=$admin_id";
-		mysqli_query($conn, $query);
+				$query = "UPDATE users SET username='$username', role='$role' WHERE id=$admin_id";
+				mysqli_query($conn, $query);
 
-		$_SESSION['message'] = "Admin user updated successfully";
-		header('location: users.php');
-		exit(0);
+				$_SESSION['message'] = "Admin user updated successfully";
+				header('location: users.php');
+				exit(0);
+			}}
+			else{
+		// register user if there are no errors in the form
+				if (count($errors) == 0) {
+		//encrypt the password (security purposes)
+					$password = md5($password);
+
+					$query = "UPDATE users SET username='$username', email='$email', role='$role' WHERE id=$admin_id";
+					mysqli_query($conn, $query);
+
+					$_SESSION['message'] = "Admin user updated successfully";
+					header('location: users.php');
+					exit(0);
+				}
+			}
+			if ($user['email'] !== $request_values['email']) {
+				if (count($errors) == 0) {
+		//encrypt the password (security purposes)
+					$password = md5($password);
+
+					$query = "UPDATE users SET email='$email', role='$role' WHERE id=$admin_id";
+					mysqli_query($conn, $query);
+
+					$_SESSION['message'] = "Admin user updated successfully";
+					header('location: users.php');
+					exit(0);
+				}
+			}else{
+	//register user if there are no errors in the form
+				if (count($errors) == 0) {
+		//encrypt the password (security purposes)
+					$password = md5($password);
+
+					$query = "UPDATE users SET username='$username', email='$email', role='$role' WHERE id=$admin_id";
+					mysqli_query($conn, $query);
+
+					$_SESSION['message'] = "Admin user updated successfully";
+					header('location: users.php');
+					exit(0);
+				}
+			}
+
+		}
+	// // register user if there are no errors in the form
+	// 	if (count($errors) == 0) {
+	// 	//encrypt the password (security purposes)
+	// 		$password = md5($password);
+
+	// 		$query = "UPDATE users SET username='$username', email='$email', role='$role' WHERE id=$admin_id";
+	// 		mysqli_query($conn, $query);
+
+	// 		$_SESSION['message'] = "Admin user updated successfully";
+	// 		header('location: users.php');
+	// 		exit(0);
+	// 	}
 	}
-}
 
 
-function updateAdminPassword($request_values){
-	global $conn, $errors, $role, $username, $isEditingUser, $admin_id, $email;
+	function updateAdminPassword($request_values){
+		global $conn, $errors, $role, $username, $isEditingUser, $admin_id, $email;
 	// get id of the admin to be updated
-	$admin_id = $request_values['admin_id'];
+		$admin_id = $request_values['admin_id'];
 	// set edit state to false
-	$isEditingUser = false;
-
-
-	$username = esc($request_values['username']);
-	$email = esc($request_values['email']);
-	$password = esc($request_values['password']);
-	$passwordConfirmation = esc($request_values['passwordConfirmation']);
-	if(isset($request_values['role'])){
-		$role = $request_values['role'];
-	}
+		$isEditingUser = false;
+		$username = esc($request_values['username']);
+		$email = esc($request_values['email']);
+		$password = esc($request_values['password']);
+		$passwordConfirmation = esc($request_values['passwordConfirmation']);
+		if(isset($request_values['role'])){
+			$role = $request_values['role'];
+		}
 	// register user if there are no errors in the form
-	if (count($errors) == 0) {
+		if (count($errors) == 0) {
 		//encrypt the password (security purposes)
-		$password = md5($password);
+			$password = md5($password);
 
-		$query = "UPDATE users SET  password='$password' WHERE id=$admin_id";
-		mysqli_query($conn, $query);
+			$query = "UPDATE users SET  password='$password' WHERE id=$admin_id";
+			mysqli_query($conn, $query);
 
-		$_SESSION['message'] = "Admin user Password updated successfully";
-		header('location: users.php');
-		exit(0);
+			$_SESSION['message'] = "User Password updated successfully";
+			header('location: users.php');
+			exit(0);
+		}
 	}
-}
 // delete admin user 
-function deleteAdmin($admin_id) {
-	global $conn;
-	$sql = "DELETE FROM users WHERE id=$admin_id";
-	if (mysqli_query($conn, $sql)) {
-		$_SESSION['message'] = "User successfully deleted";
-		header("location: users.php");
-		exit(0);
+	function deleteAdmin($admin_id) {
+		global $conn;
+		$sql = "DELETE FROM users WHERE id=$admin_id";
+		if (mysqli_query($conn, $sql)) {
+			$_SESSION['message'] = "User successfully deleted";
+			header("location: users.php");
+			exit(0);
+		}
 	}
-}
 
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
 * - Returns all admin users and their corresponding roles
@@ -285,7 +330,7 @@ function createTopic($request_values){
 	// register topic if there are no errors in the form
 	if (count($errors) == 0) {
 		$query = "INSERT INTO topics (name, slug) 
-				  VALUES('$topic_name', '$topic_slug')";
+		VALUES('$topic_name', '$topic_slug')";
 		mysqli_query($conn, $query);
 
 		$_SESSION['message'] = "Topic created successfully";

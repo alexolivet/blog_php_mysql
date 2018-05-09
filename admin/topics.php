@@ -42,9 +42,9 @@
                 <!-- //Aside nav drawer -->
                 <div class="column is-hidden-mobile">
                     <h1 class="title">Edit / Create Topics</h1>
-                    <form method="post" action="<?php echo BASE_URL . 'admin/topics.php'; ?>">
-                        <!-- validation errors for the form -->
+                     <!-- validation errors for the form -->
                         <?php include(ROOT_PATH . '/includes/errors.php') ?>
+                    <form method="post" action="<?php echo BASE_URL . 'admin/topics.php'; ?>">
                         <!-- if editing topic, the id is required to identify that topic -->
                         <?php if ($isEditingTopic === true): ?>
                         <input type="hidden" name="topic_id" value="<?php echo $topic_id; ?>">

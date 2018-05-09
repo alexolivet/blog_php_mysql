@@ -31,11 +31,11 @@ ini_set( "display_errors" , 1 );?>
                     <figure class="avatar">
                         <img src="https://placehold.it/128x128">
                     </figure>
+                    <?php include(ROOT_PATH . '/includes/errors.php') ?>
                     <form method="post" action="register.php">
-                        <?php include(ROOT_PATH . '/includes/errors.php') ?>
                         <div class="field">
                             <div class="control has-icons-left has-icons-right">
-                                <input class="input is-success" type="text" name="username" value="<?php echo $username; ?>" placeholder="username">
+                                <input class="input is-success" type="text" id="registerInput" data-charcount-maxlength="20" name="username" value="<?php echo $username; ?>" placeholder="username">
                                 <span class="icon is-small is-left">
 								<i class="fas fa-user"></i>
 							</span>
